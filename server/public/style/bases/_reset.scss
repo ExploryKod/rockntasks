@@ -1,0 +1,18 @@
+body{
+    padding:0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+.wrapper-front,.layout-front-wrapper{
+    height:calc(100% - 47px);
+}
+
+a{
+    text-decoration:none;
+    color:black;
+}

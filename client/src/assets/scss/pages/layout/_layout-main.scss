@@ -1,0 +1,9 @@
+.home {
+    flex: 1;
+    overflow: hidden;
+      
+    section {
+        padding-top: var(--section-padding-top);
+        padding-bottom: var(--section-padding-bottom);
+    }
+}
