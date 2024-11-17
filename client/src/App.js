@@ -1,5 +1,6 @@
 import {Routes, Route} from "react-router-dom";
-import Home from "./routes/home";
+import Home from "./routes/home.jsx";
+import Food from "./routes/food.jsx";
 import Todo from "./routes/todo";
 import Shop from "./routes/shop";
 import Board from "./routes/board";
@@ -23,8 +24,8 @@ function App() {
       <Routes>
           <Route path='/' element={<Navigation/>}>
               <Route index element={<NeedAuth><Home /></NeedAuth>}/>
-              <Route index element={<Home />} />
-              <Route path='todo' element={<Todo />} />
+              <Route path='todo' element={<NeedAuth><Todo /></NeedAuth>} />
+              <Route path='food' element={<NeedAuth><Food /></NeedAuth>} />
               <Route path='shop/*' element={<NeedAuth><Shop /></NeedAuth>} />
               <Route path='todo/board/*' element={<NeedAuth><Board /></NeedAuth>} />
               <Route path='checkout' element={<NeedAuth><Checkout /></NeedAuth>} />

@@ -1,11 +1,11 @@
 import { Outlet } from 'react-router-dom';
-import HomeContainers from '../components/home/homeContainers';
 
+import CategoriesContainer from "../components/categories-container";
 const Food = () => {
 
   return (
     <div className="home">
-    <HomeContainers/>
+    <CategoriesContainer/>
     <Outlet/>
     </div>
   );
