@@ -6,7 +6,7 @@ const Food = () => {
   return (
     <div className="home">
      <div className="categories-container">
-        <h1 className="category-title">Bienvenue sur votre site de coaching !</h1>
+        <h1 className="category-title">Bienvenue sur Foodcare, votre site de coaching de vie et alimentaire !</h1>
         <p  className="category-text">Ce site est un site-relai entre foodcare et vous même. Votre coach a choisi pour vous une palette de tâches et des aliments sains. 
             Commandez certains aliments et engagez-vous sur certaines tâches.
             Vous pouvez en outre acheter directement des aliments à notre boutique si cela facilite vos engagements. 
