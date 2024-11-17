@@ -22,7 +22,7 @@ export const useLoggedStore = create<LoggedState>((set) => ({
     },
     removeToken: () => {
         localStorage.removeItem('token');
-        set({ token: '' }); // Set the token to an empty string in the state
+        set({ token: '' }); 
     },
     setUsername: (username: string) => {
         localStorage.setItem('username', username);
@@ -30,7 +30,7 @@ export const useLoggedStore = create<LoggedState>((set) => ({
     },
     removeUsername: () => {
         localStorage.removeItem('username');
-        set({ username: '' }); // Set the username to an empty string in the state
+        set({ username: '' }); 
     },
     setAdminStatus: (admin: string) => {
         localStorage.setItem('admin', admin);

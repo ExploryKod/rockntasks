@@ -1,4 +1,7 @@
 import { Fragment } from 'react';
+import { useLoggedStore } from '../StateManager/userStore.ts';
+import useFlashMessage from '../Hook/useFlashMessage.tsx';
+import { LogOut } from 'lucide-react';
 import { useContext, useState, useEffect } from 'react';
 import { Outlet, Link } from 'react-router-dom';
 import CartIcon from '../components/cart-icon'
@@ -14,6 +17,19 @@ import ListItem from '../components/todo/list-item'
 import { useNavigate } from 'react-router-dom';
 
 const Navigation = () => {
+
+    const { toastMessage, createDefaultToastOptions } = useFlashMessage('');
+    const { removeToken, removeUsername, removeAdminStatus } = useLoggedStore();
+    const toastOptionsSuccess = createDefaultToastOptions({type: 'success', position: 'top-center', autoClose: 3000});
+
+    const handleLogout = () => {
+        removeToken();
+        removeUsername();
+        removeAdminStatus();
+        toastMessage('Vous êtes bien déconnecté', toastOptionsSuccess);
+        // Redirect to the login page or any other desired page after logout
+        navigate('/');
+    };
 
     const { cartItems } = useContext(CartContext);
     const { listItems } = useContext(ListContext);
@@ -81,11 +97,11 @@ const Navigation = () => {
                     <Link className='nav-link' to='/todo'>
                         MES ACTIVITES
                     </Link>
-                    <Link className='nav-link' to='/logout'>
-                        SE DECONNECTER
-                    </Link>
                     <CartIcon onOpenModal={onOpenCartModal} />
                     <TaskIcon onOpenModal={onOpenListModal} />
+                    <button className='exit-btn nav-link' onClick={handleLogout}>
+                        <span className="exit-btn__icon"><LogOut  size={24} /></span>
+                    </button>
                 </div>
             </div>
             {totalQuality.points > 0 ?
