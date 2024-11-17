@@ -1,37 +1,43 @@
-import { Routes, Route } from 'react-router-dom';
+import {Routes, Route} from "react-router-dom";
 import Home from "./routes/home";
-import Navigation from "./routes/navigation";
+import Todo from "./routes/todo";
 import Shop from "./routes/shop";
+import Board from "./routes/board";
 import Checkout from "./routes/checkout";
+import TaskList from "./routes/taskList.jsx";
+
 import Shopping from "./routes/shopping";
-import Upload from "./routes/upload";
-import Connexion from './routes/connexion';
 import NotFoundPage from './routes/notFoundPage';
-import UploadFilesPage from "./routes/uploadFilesPage";
 import StripePayment from "./routes/StripePayment";
 import PaymentSuccess from "./routes/PaymentSuccess";
 
+import NeedAuth from "./Auth/NeedAuth.tsx";
+import Connexion from "./Auth/Connexion.tsx";
+import Navigation from "./routes/navigation.jsx";
+import {Credits} from "./Pages/Credits.tsx";
 
-const App = () => {
+function App() {
 
- 
-
-  return (
-    <Routes>
-      <Route path='connexion' element={<Connexion />} />
-      <Route path='/' element={<Navigation />}>
-        <Route index element={<Home />} />
-        <Route path='shop/*' element={<Shop />} />
-        <Route path='checkout' element={<Checkout />} />
-        <Route path='shopping' element={<Shopping />} />
-        {/* <Route path='upload/*' element={<Upload />} /> */}
-        {/* <Route path='show-uploads' element={<UploadFilesPage />} /> */}
-        <Route path="payment" element={<StripePayment />} />
-        <Route path="success" element={<PaymentSuccess />} />
-        <Route path='*' element={<NotFoundPage category={""} />}  />
-      </Route>
-    </Routes>
-  );
-};
+    return (
+      <Routes>
+          <Route path='/' element={<Navigation/>}>
+              <Route index element={<NeedAuth><Home /></NeedAuth>}/>
+              <Route index element={<Home />} />
+              <Route path='todo' element={<Todo />} />
+              <Route path='shop/*' element={<NeedAuth><Shop /></NeedAuth>} />
+              <Route path='todo/board/*' element={<NeedAuth><Board /></NeedAuth>} />
+              <Route path='checkout' element={<NeedAuth><Checkout /></NeedAuth>} />
+              <Route path='task-list' element={<NeedAuth><TaskList /></NeedAuth>} />
+              <Route path='shopping' element={<NeedAuth><Shopping /></NeedAuth>} />
+              <Route path="payment" element={<NeedAuth><StripePayment /></NeedAuth>} />
+              <Route path="success" element={<NeedAuth><PaymentSuccess /></NeedAuth>} />
+              <Route path='*' element={<NotFoundPage category={""} />}  />
+          </Route>
+          <Route path='/credits' element={<Credits/>}/>
+          <Route path='/connexion' element={<Connexion/>}/>
+      </Routes>
+    );
+}
 
 export default App;
+

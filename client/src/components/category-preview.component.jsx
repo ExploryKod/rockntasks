@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import { ProductCard } from './product-card';
-import { removeAccent } from '../utils/dataValidation/stringValidation.utils';
 import {useEffect, useState} from "react";
 
 const PRODUCTS = [
@@ -172,6 +171,8 @@ export const CategoryPreview = ({ title, category_food_id, category }) => {
   
    const [ foodProducts, setFoodProducts ] = useState([])
    const [ isLoading, setIsLoading] = useState(false)
+
+   console.log("foodproducts", foodProducts)
 
     useEffect(() => {
         setIsLoading(true)

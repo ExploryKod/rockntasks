@@ -1,0 +1,20 @@
+.custom-scrollbar-container {
+  &::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  &::-webkit-scrollbar-track {
+    overflow: hidden;
+    border-radius: $round-sm;
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: $round-sm;
+    border: none;
+  }
+
+  scrollbar-width: thin; /* "auto" or "thin" */
+  scrollbar-color: $darkpink transparent; /* scroll thumb and track */
+}

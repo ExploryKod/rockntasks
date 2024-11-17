@@ -2,31 +2,44 @@ import { Fragment } from 'react';
 import { useContext, useState, useEffect } from 'react';
 import { Outlet, Link } from 'react-router-dom';
 import CartIcon from '../components/cart-icon'
+import TaskIcon from '../components/todo/task-icon'
 import { CartContext } from '../context/cart.context';
+import { ListContext } from '../context/list.context';
 import logo from '../assets/img/logo.png';
 import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
-import CartDropdown from '../components/cart-dropdown';
 import Button from '../components/button';
 import CartItem from '../components/cart-item'
+import ListItem from '../components/todo/list-item'
 import { useNavigate } from 'react-router-dom';
 
 const Navigation = () => {
 
     const { cartItems } = useContext(CartContext);
+    const { listItems } = useContext(ListContext);
     const [total, setTotal] = useState(0);
     const [totalQuality, setTotalQuality] = useState({points: 0, color: ''});
-    const [open, setOpen] = useState(false);
+    const [openCart, setOpenCart] = useState(false);
+    const [openList, setOpenList] = useState(false);
 
-    const onOpenModal = () => setOpen(true);
-    const onCloseModal = () => setOpen(false);
+    const onOpenCartModal = () => setOpenCart(true);
+    const onCloseCartModal = () => setOpenCart(false);
+    const onOpenListModal = () => setOpenList(true);
+    const onCloseListModal = () => setOpenList(false);
+
     const navigate = useNavigate();
     const goToCheckoutPage = () => {
         navigate('/checkout')
-        setOpen(false);
+        setOpenCart(false);
+    };
+
+    const goToTaskPage = () => {
+        navigate('/task-list')
+        setOpenList(false);
     };
 
     useContext(CartContext);
+    useContext(ListContext);
 
     function sumArray(arr) {
         var total = arr.reduce(function(acc, curr) {
@@ -65,13 +78,14 @@ const Navigation = () => {
                     <Link className='nav-link' to='/shop'>
                         BOUTIQUE
                     </Link>
-                    {/* <Link className='nav-link' to='/upload'>
-                        PROPOSITIONS
-                    </Link> */}
-                    {/* <Link className='nav-link' to='/connexion'>
-                        S'INSCRIRE
-                    </Link> */}
-                    <CartIcon onOpenModal={onOpenModal} />
+                    <Link className='nav-link' to='/todo'>
+                        MES ACTIVITES
+                    </Link>
+                    <Link className='nav-link' to='/logout'>
+                        SE DECONNECTER
+                    </Link>
+                    <CartIcon onOpenModal={onOpenCartModal} />
+                    <TaskIcon onOpenModal={onOpenListModal} />
                 </div>
             </div>
             {totalQuality.points > 0 ?
@@ -81,21 +95,36 @@ const Navigation = () => {
                 </div>
             </div>): null}
 
-            <Modal open={open} onClose={onCloseModal} center >
-            <div className="cart-dropdown-container">
-            <div className={`cart-dropdown ${cartItems.length <= 0 ? "no-cart-items" : ""}`}>
-            {cartItems.length > 0 ?
-                (<>
-                <div className='cart-items'>
-                    {cartItems.map((item) => <CartItem key={item.id} cartItem={item} />)}
-                </div>
-                <Button onClick={goToCheckoutPage}>Valider</Button>
-                </>
-                ): (<p> Vous n'avez pas encore d'articles </p>)}
+            <Modal open={openCart} onClose={onCloseCartModal} center >
+                <div className="cart-dropdown-container">
+                    <div className={`cart-dropdown ${cartItems.length <= 0 ? "no-cart-items" : ""}`}>
+                    {cartItems.length > 0 ?
+                        (<>
+                        <div className='cart-items'>
+                            {cartItems.map((item) => <CartItem key={item.id} cartItem={item} />)}
+                        </div>
+                        <Button onClick={goToCheckoutPage}>Valider</Button>
+                        </>
+                        ): (<p> Vous n'avez pas encore d'articles </p>)}
 
-            </div>
-        </div>
-                
+                    </div>
+                </div>
+            </Modal>
+
+            <Modal open={openList} onClose={onCloseListModal} center >
+                <div className="list-dropdown-container">
+                    <div className={`list-dropdown ${listItems.length <= 0 ? "no-list-items" : ""}`}>
+                    {listItems.length > 0 ?
+                        (<>
+                        <div className='list-items'>
+                            {listItems.map((item) => <ListItem  key={item.id} listItem={item} />)}
+                        </div>
+                        <Button onClick={goToTaskPage}>Voir</Button>
+                        </>
+                        ): (<p> Vous n'avez pas encore de tâches </p>)}
+
+                    </div>
+                </div>
             </Modal>
 
             <Outlet />

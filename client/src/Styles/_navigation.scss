@@ -1,0 +1,214 @@
+@import 'bases/variables';
+
+.navigation {
+  background-color: $darkBlue;
+  z-index: $z-more-xl;
+
+  @include media-breakpoint-down(sm) {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom:0;
+    height: 15vh;
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100px, 100%), 1fr));
+    grid-template-rows: auto;
+    padding: 15px 15px 100px 15px;
+  }
+
+  @include media-breakpoint-up(sm) {
+    position: fixed;
+    height: 100vh;
+
+    min-width: 225px;
+    max-width: 200px;
+    display: grid;
+    grid-template-rows: 200px repeat(auto-fit, minmax(min(100px, 100%), 1fr));
+  }
+
+  .first-nav {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    @include media-breakpoint-up(sm) {
+      grid-column:1;
+      grid-row: 1;
+    }
+  }
+
+  .second-nav {
+    grid-column: 2 / -1;
+    grid-row: 1;
+    margin-right: 20px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+
+    .nav-link:not(:last-of-type) {
+      margin-right: 10px;
+    }
+
+    @include media-breakpoint-up(sm) {
+      grid-column:1;
+      grid-row: 2;
+      flex-direction: column;
+      align-items: start;
+      justify-content: start;
+      gap: 10px;
+
+      .nav-link {
+        margin-right: 0;
+      }
+    }
+  }
+
+  .admin {
+    display: none;
+    @include media-breakpoint-up(sm) {
+      display: block;
+    }
+  }
+
+  .last-nav {
+    grid-column: 2 / -1;
+    grid-row: 2;
+    width: 100%;
+    margin-bottom: 10px;
+    padding-right: 20px;
+    display:flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    span:first-child {
+      display: none;
+      @include media-breakpoint-up(sm) {
+        display: block;
+        margin-top: 2px;
+      }
+    }
+
+    @include media-breakpoint-up(sm){
+      grid-row: -1;
+      grid-column: 1;
+      justify-self: end;
+    }
+  }
+
+  .nav-links-container {
+    display: flex;
+    @include media-breakpoint-up(sm) {
+      align-items: center;
+      justify-content: space-around;
+    }
+
+    &.--vertical {
+      @include media-breakpoint-up(sm) {
+        flex-direction: column;
+        justify-content: start;
+        align-items: start;
+        padding-left: 10px;
+      }
+    }
+
+    .nav-link {
+      font-size: 18px;
+      font-weight: 600;
+      color: white;
+      cursor: pointer;
+      @include media-breakpoint-up(sm) {
+        padding: 10px 20px;
+      }
+
+      &.--hide {
+        display: none;
+      }
+
+      &:hover {
+        color: $darkpink;
+      }
+
+    }
+
+
+
+
+      .exit-btn {
+        display: flex;
+        gap: 10px;
+        padding: 15px 25px;
+        border-radius: 20px;
+        border: 2px solid white;
+        @include media-breakpoint-up(sm) {
+          white-space: nowrap;
+          display: block;
+          border: none;
+          padding: 0 20px;
+          span.exit-btn__icon {
+            display: none;
+          }
+        }
+      }
+
+
+    button.nav-link {
+      background-color: transparent;
+      border: none;
+      outline: none;
+      cursor: pointer;
+    }
+  }
+}
+
+// colors
+$bgColor: #FFFFFF;
+$borderColor: #00BCD4;
+
+// sizes
+$avatarSize: 100px;
+$borderWidth: 5px;
+$paddingSize: 20px;
+
+// some calculations
+$translateValue: -$paddingSize - $borderWidth;
+
+.avatar-container {
+  position: relative;
+  width: $avatarSize;
+  @include media-breakpoint-up(sm) {
+    border: $borderWidth solid $bgColor;
+    height: $avatarSize;
+    width: $avatarSize;
+    border-radius: 50%;
+  }
+
+  &__image {
+    width: 100%;
+    border-radius: 50%;
+  }
+
+  @include media-breakpoint-up(sm) {
+    &::before,
+    &::after {
+      border: $borderWidth solid transparent;
+      border-top: $borderWidth solid $borderColor;
+      border-radius: 50%;
+      content: "";
+      display: block;
+      height: calc(100% + 10px);
+      left: 50%;
+      width: calc(100% + 10px);
+      position: absolute;
+    }
+
+    &::before {
+      top: -2 * $borderWidth;
+      transform: translateX(-50%);
+    }
+
+    &::after {
+      bottom: -2 * $borderWidth;
+      transform: translateX(-50%) rotate(180deg);
+    }
+  }
+}

@@ -1,0 +1,63 @@
+.room-link-container {
+    margin: 30px auto;
+}
+
+.user-list__container {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+
+
+}
+
+.table-container {
+    width: 80%;
+    height: auto;
+    overflow: hidden;
+    box-shadow: 0 0 20px var(--box-shadow-color);
+}
+
+.table {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.table-header {
+    color: #fff;
+    background-color: #03045e;
+}
+
+.table-row,
+.body-row {
+    display: grid;
+    text-decoration: none;
+    color: inherit;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    column-gap: 1em;
+    justify-items: center;
+    align-items: center;
+    cursor: pointer;
+    padding: 1em;
+}
+
+.address-cell {
+    grid-column: 4 / span 2;
+}
+
+.body-row:nth-of-type(odd) {
+    background-color: #caf0f8;
+}
+
+.body-row:nth-last-of-type(1) {
+    border-bottom: 2px solid #03045e;
+}
+
+.table a:hover {
+    background-color: var(--table-row-hover-color);
+    color: var(--table-text-hover-color);
+    cursor: pointer;
+}

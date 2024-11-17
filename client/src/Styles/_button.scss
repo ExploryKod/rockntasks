@@ -1,0 +1,75 @@
+.btn-mini {
+  background: $darkBlue;
+  color: $lightLavender;
+  border: none;
+  border-radius: $round-md;
+  padding: 8px 15px;
+  cursor: pointer;
+  transition: background 0.25s ease-in-out;
+
+  &:hover {
+    background: $darkpink;
+    color: #fff;
+  }
+}
+
+.btn-reset {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.button-container {
+  min-width: 250px;
+  
+  height: 50px;
+  letter-spacing: 0.5px;
+  line-height: 50px;
+  padding: 0 35px 0 35px;
+  font-size: 15px;
+  background-color: rgb(28, 26, 26);
+  color: white;
+  text-transform: uppercase;
+  font-family: 'Open Sans Condensed';
+  font-weight: bolder;
+  border: 1px solid transparent;
+  border-radius: $round-xs;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  transition: background-color 0.25s ease-in-out, border 0.25s ease-in-out, color 0.25s ease-in-out;
+  z-index: 3;
+
+  &.room-button {
+    margin-top: 20px;
+  }
+
+  &:hover {
+    background-color: white;
+    color: black;
+    border: 1px solid #4285f4;
+  }
+
+  &.social {
+    background-color: #4285f4;
+    color: white;
+
+    &:hover {
+      background-color: #357ae8;
+      border: none;
+    }
+  }
+
+  &.inverted {
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+
+    &:hover {
+      background-color: black;
+      color: white;
+      border: none;
+    }
+  }
+}

@@ -1,0 +1,117 @@
+@import 'utilities';
+/*******************************************
+    UTILITIES UNDER MEDIA BREAKPOINT SM
+******************************************/
+
+@include media-breakpoint-down(sm) {
+
+/* padding, margin, height  */
+
+  @for $i from 1 through 150 {
+    .max-sm--#{padding-class($i)} {
+      padding: check-padding($i) * 1px;
+    }
+
+    .max-sm--#{padding-class('x-' + $i)} {
+      padding-left: check-padding($i) * 1px;
+      padding-right: check-padding($i) * 1px;
+    }
+
+    .max-sm--#{padding-class('y:sm-' + $i)} {
+      padding-top: check-padding($i) * 1px;
+      padding-bottom: check-padding($i) * 1px;
+    }
+  }
+
+  @for $i from 1 through 150 {
+    .max-sm--#{margin-class(':sm-'+ $i)} {
+      margin: check-padding($i) * 1px;
+    }
+
+    .max-sm--#{margin-class('x:sm-' + $i)} {
+      margin-left: check-padding($i) * 1px;
+      margin-right: check-padding($i) * 1px;
+    }
+
+    .max-sm--#{margin-class('y:sm-' + $i)} {
+      margin-top: check-padding($i) * 1px;
+      margin-bottom: check-padding($i) * 1px;
+    }
+    .max-sm--#{margin-class('right:sm-' + $i)} {
+      margin-right: check-padding($i) * 1px;
+    }
+
+    .max-sm--#{margin-class('left:sm-' + $i)} {
+      margin-left: check-padding($i) * 1px;
+    }
+  }
+
+
+  @for $i from 1 through 1440 {
+    .sm--#{height-class($i)} {
+      height: $i * 1px;
+    }
+  }
+
+  @for $i from 1 through 1440 {
+    .max-sm--#{width-class($i)} {
+      width: $i * 1px;
+    }
+  }
+
+  @for $i from 1 through 1440 {
+    .max-sm--#{min-width-class($i)} {
+      min-width: $i * 1px;
+    }
+  }
+
+  @for $i from 1 through 1440 {
+    .max-sm--#{min-height-class($i)} {
+      min-height: $i * 1px;
+    }
+  }
+
+  @for $i from 1 through 1440 {
+    .max-sm--#{max-width-class($i)} {
+      max-width: $i * 1px;
+    }
+  }
+
+  @for $i from 1 through 1440 {
+    .max-sm--#{max-height-class($i)} {
+      max-height: $i * 1px;
+    }
+  }
+}
+
+/* Overflow */
+
+@include media-breakpoint-down(sm) {
+  .max-sm--overflow-hidden {
+    overflow: hidden;
+  }
+
+  .max-sm--overflow-auto {
+    overflow: auto;
+  }
+
+  .max-sm--overflow-visible {
+    overflow: visible;
+  }
+
+  .max-sm--overflow-scroll {
+    overflow: scroll;
+  }
+
+  .max-sm--overflow-x-hidden {
+    overflow-x: hidden;
+  }
+
+  .max-sm--overflow-x-auto {
+    overflow-x: auto;
+  }
+
+  .max-sm--overflow-x-visible {
+    overflow-x: visible;
+  }
+}

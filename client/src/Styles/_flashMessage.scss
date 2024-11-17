@@ -1,0 +1,30 @@
+@import './bases/variables';
+
+.output-message {
+  min-width: 100px;
+  max-width: 500px;
+  background: $darkBlue;
+  color: $lightLavender;
+  border-radius: $round-xxs;
+  text-align: center;
+  box-shadow: 0 11px 34px 0 rgb(0 0 0 / 20%);
+  margin: 5px auto;
+  padding: 20px 15px;
+  animation : fadeInOut 3s ease-out;
+  opacity: 0;
+}
+
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    5% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}

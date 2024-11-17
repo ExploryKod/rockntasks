@@ -10,6 +10,12 @@ services:
         target: /home/node/
       - type: volume
         target: /home/node/node_modules
+    environment:
+       - MYSQL_ADDON_HOST=localhost
+       - MYSQL_ADDON_DB=foodcare
+       - MYSQL_ADDON_USER=amaury
+       - MYSQL_ADDON_PORT=3306
+       - MYSQL_ADDON_PASSWORD=dbyeu
     ports:
       - 3000:3000
   api:

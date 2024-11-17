@@ -3,7 +3,7 @@ const productModel = require('../../models/foodCategoriesModel/foodCategories.mo
 
 router.get('/', async (req, res) => {
     try {
-        const allProducts = await productModel.getAllFoodCategories();
+        const allProducts = await productModel.getAllFoodCategories('mysql');
         res.set('Access-Control-Allow-Origin', '*');
         res.send(allProducts);
     } catch (error) {

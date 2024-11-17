@@ -1,0 +1,551 @@
+@import 'variables';
+
+/***********************************
+ Utilities mixins and functions (except responsive)
+***********************************/
+
+@function padding-class($size) {
+  @return "padding-#{$size}";
+}
+
+@function margin-class($size) {
+  @return "margin-#{$size}";
+}
+
+@function height-class($size) {
+  @return "height-#{$size}";
+}
+
+@function width-class($size) {
+  @return "width-#{$size}";
+}
+
+@function min-width-class($size) {
+  @return "min-width-#{$size}";
+}
+
+@function min-height-class($size) {
+  @return "min-height-#{$size}";
+}
+
+@function max-width-class($size) {
+  @return "max-width-#{$size}";
+}
+
+@function max-height-class($size) {
+  @return "max-height-#{$size}";
+}
+
+@function text-size($size) {
+  @return "text-size-#{$size}";
+}
+
+/********************************
+  Utilities Class
+*********************************/
+
+/* Overflow */
+
+@include media-breakpoint-up(sm) {
+  .overflow-hidden {
+    overflow: hidden;
+  }
+
+  .overflow-auto {
+    overflow: auto;
+  }
+
+  .overflow-visible {
+    overflow: visible;
+  }
+
+  .overflow-scroll {
+    overflow: scroll;
+  }
+}
+
+/* Height, width, paddings and margins */
+
+@function check-padding($number) {
+  @if $number > 150 {
+    @warn "The padding number is more than 100. Please adjust the number accordingly.";
+  }
+  @return $number;
+}
+
+@function check-height($number) {
+  @if $number > 1440 {
+    @warn "The width number is more than 1440. Please adjust the number accordingly.";
+  } @else if $number < 1 {
+    @warn "The padding number is less than 1. Please adjust the number accordingly.";
+  }
+  @return $number;
+}
+
+@function check-width($number) {
+  @if $number > 1440 {
+    @warn "The padding number is more than 1440. Please adjust the number accordingly.";
+  } @else if $number < 1 {
+    @warn "The padding number is less than 1. Please adjust the number accordingly.";
+  }
+  @return $number;
+}
+
+
+@include media-breakpoint-up(sm) {
+
+  @for $i from 1 through 150 {
+    .#{padding-class($i)} {
+      padding: $i * 1px;
+    }
+
+    .#{padding-class('x-' + $i)} {
+      padding-left: $i * 1px;
+      padding-right: $i * 1px;
+    }
+
+    .#{padding-class('y-' + $i)} {
+      padding-top: $i * 1px;
+      padding-bottom: $i * 1px;
+    }
+  }
+
+  @for $i from 1 through 150 {
+    .#{margin-class($i)} {
+      margin: $i * 1px;
+    }
+
+    .#{margin-class('x-' + $i)} {
+      margin-left: $i * 1px;
+      margin-right: $i * 1px;
+    }
+
+    .#{margin-class('y-' + $i)} {
+      margin-top: $i * 1px;
+      margin-bottom: $i * 1px;
+    }
+    .#{margin-class('right-' + $i)} {
+      margin-right: $i * 1px;
+    }
+
+    .#{margin-class('left-' + $i)} {
+      margin-left: $i * 1px;
+    }
+  }
+
+  @for $i from 1 through 1440 {
+    .#{height-class($i)} {
+      height: $i * 1px;
+    }
+  }
+
+  @for $i from 1 through 1440 {
+    .#{width-class($i)} {
+      width: $i * 1px;
+    }
+  }
+
+  @for $i from 1 through 1440 {
+    .#{min-width-class($i)} {
+      min-width: $i * 1px;
+    }
+  }
+
+  @for $i from 1 through 1440 {
+    .#{min-height-class($i)} {
+      min-height: $i * 1px;
+    }
+  }
+
+  @for $i from 1 through 1440 {
+    .#{max-width-class($i)} {
+      max-width: $i * 1px;
+    }
+  }
+
+  @for $i from 1 through 1440 {
+    .#{max-height-class($i)} {
+      max-height: $i * 1px;
+    }
+  }
+
+  /* With percentage */
+
+  @for $i from 1 through 100 {
+    .per-#{height-class($i)} {
+      height: $i *1%;
+    }
+  }
+
+  /* viewport */
+  @for $i from 1 through 100 {
+    .vh-#{height-class($i)} {
+      height: $i *1vh;
+    }
+  }
+}
+
+.width-content {
+  width: fit-content;
+}
+
+.text-align-center {
+  text-align: center;
+}
+
+/* Text sizes */
+@include media-breakpoint-up(sm) {
+
+  @for $i from 1 through 150 {
+    .#{text-size($i)} {
+      font-size: $i * 1px;
+    }
+  }
+}
+/* Display opacity */
+.opacity-100 {
+  opacity: 1;
+}
+
+.opacity-0 {
+  opacity: 0;
+}
+
+.opacity-transition {
+  transition: opacity 0.3s ease-in-out;
+}
+
+.opacity-animation-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.opacity-animation-out {
+  animation: fadeOut 0.3s ease-in-out;
+}
+
+.container-20 {
+  min-height: 40px;
+  background-color: transparent;
+}
+
+
+
+/* Keyframes */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.center-me {
+ margin: 0 auto;
+}
+
+.center-me-by-position {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.flex-center-childs-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-center-childs-column {
+  display: flex;
+  flex-direction: column;
+
+  &.--flex-centered {
+    justify-content: center;
+    align-items: center;
+  }
+
+  &.--justify-center {
+    justify-content: center;
+  }
+
+  &.--justify-end {
+    justify-content: end
+  }
+
+  &.--align-end {
+    align-items: end;
+  }
+
+  &.--align-center {
+    align-items: center;
+  }
+}
+
+.flex-align-self-end {
+  align-self: end;
+}
+
+.flex-align-self-center {
+  align-self: center;
+}
+
+
+
+/* Colors */
+
+.bgd-darkpink {
+  background-color: $darkpink;
+}
+
+.bgd-darkLavender {
+  background-color: $darkLavender;
+}
+
+.bgd-darkLavender-80 {
+  background-color: $darkLavender-80;
+}
+
+.bgd-darkBlue {
+  background-color: $darkBlue;
+}
+
+.bgd-lightLavender {
+  background-color: $lightLavender;
+}
+
+.bgd-gradient-darkpink {
+  //background: linear-gradient(90deg, $darkpink 0%, $darkLavender 100%);
+  background: linear-gradient(135deg, #044f48, #2a7561);
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+.bgd-white {
+  background-color: #fff;
+}
+
+.bgd-black {
+  background-color: #000;
+}
+
+.bgd-red {
+  background-color: #de392a;
+}
+
+.bgd-green {
+  background-color: #00ff00;
+}
+
+.bgd-success {
+  background-color: $success;
+  color: $dark-text-color;
+  &:hover {
+    background-color: darken($success, 10%);
+  }
+}
+
+.bgd-warning {
+  background-color: $warning;
+  color: $dark-text-color;
+  &:hover {
+      background-color: darken($warning, 10%);
+  }
+}
+
+.text-dark {
+  color: $dark-text-color;
+}
+
+.text-darkpink {
+  color: $darkpink;
+}
+
+.text-darkLavender {
+  color: $darkLavender;
+}
+
+.text-darkLavender-80 {
+  color: $darkLavender-80;
+}
+
+.text-darkBlue {
+  color: $darkBlue;
+}
+
+.text-lightLavender {
+  color: $lightLavender;
+}
+
+.text-white {
+  color: #fff;
+}
+
+.text-red {
+  color: #ff0000;
+}
+
+.text-success {
+  color: #00ff00;
+}
+
+.text-warning {
+  color: gold;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-w-600 {
+  font-weight: 600;
+}
+
+.text-w-100 {
+  font-weight: 100;
+}
+
+.text-w-700 {
+  font-weight: 700;
+}
+
+.no-white-space {
+  white-space: nowrap;
+}
+
+.with-white-space {
+  white-space: normal;
+}
+
+/* Borders */
+
+.border-dark {
+  border: 1px solid black;
+}
+
+.border-darkpink {
+  border: 1px solid $darkpink;
+}
+
+.border-darkLavender {
+  border: 1px solid $darkLavender;
+}
+
+.border-darkLavender-80 {
+  border: 1px solid $darkLavender-80;
+}
+
+.border-darkBlue {
+  border: 1px solid $darkBlue;
+}
+
+.border-lightLavender {
+  border: 1px solid $lightLavender;
+}
+
+.border-white {
+  border: 1px solid #fff;
+}
+
+.border-radius-5 {
+  border-radius: 5px;
+}
+
+.border-radius-10 {
+  border-radius: 10px;
+}
+
+.border-radius-15 {
+  border-radius: 15px;
+}
+
+.border-circle {
+  border-radius: 50%;
+}
+
+b-shadow {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+b-shadow-1 {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+b-shadow-2 {
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+}
+
+b-shadow-3 {
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Manage display */
+.make-non-sm {
+  display: none;
+}
+
+@include media-breakpoint-up(sm) {
+  .make-none {
+    display: none;
+  }
+}
+
+/* Manage pointers */
+
+@include media-breakpoint-up(sm) {
+  .p-events-none-sm {
+    pointer-events: none;
+  }
+
+  .p-events-auto-sm {
+    pointer-events: auto;
+  }
+
+  .c-pointer-sm {
+    cursor: pointer;
+  }
+
+  .c-pointer-sm {
+    cursor: none;
+  }
+}
+
+.p-events-none {
+  pointer-events: none;
+}
+
+.p-events-auto {
+  pointer-events: auto;
+}
+
+.c-pointer {
+  cursor: pointer;
+}
+
+.c-pointer {
+  cursor: none;
+}

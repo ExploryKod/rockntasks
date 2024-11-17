@@ -46,6 +46,8 @@ app.post("/create-payment-intent", async (req, res) => {
 const uploadsRoute = require('./api/routes/uploadsRoute');
 const productsRoute = require('./api/routes/productsRoutes');
 const foodCategoriesRoute = require('./api/routes/foodCategoriesRoute');
+const tasksRoute = require('./api/routes/tasksRoutes');
+const taskActivitiesRoute = require('./api/routes/activitiesRoute');
 const authRoutes = require('./api/routes/authRoutes');
 
 app.use(session({
@@ -192,6 +194,8 @@ app.get('/download_files', (req, res) => {
 
 app.use('/category_food', foodCategoriesRoute);
 app.use('/products', productsRoute);
+app.use('/activity', taskActivitiesRoute);
+app.use('/tasks', tasksRoute);
 
 app.use((err, req, res, next) => {
   if (err) {

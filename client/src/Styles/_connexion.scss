@@ -1,0 +1,271 @@
+@import 'bases/variables';
+.page-connexion{
+
+    .outer-connexion{
+        position:absolute;
+        top:0;
+        bottom:0;
+        left:0;
+        right:0;
+        background-color: $darkLavender;
+        background-image: url('https://picsum.photos/500/600');
+        background-repeat: no-repeat;
+        background-position: bottom;
+        background-size: contain;
+        background-blend-mode:luminosity;
+        transition: background-color 0.5s ease-in-out;
+
+        @media (min-width: 500px) {
+            background-color: $mediumBlue;
+            background-image: url('https://images.pexels.com/photos/18110326/pexels-photo-18110326/free-photo-of-rue-mignon-chats-chaussee.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            background-blend-mode:luminosity;
+        }
+        
+
+        .inner-connexion{
+            background-color: $mediumBlue;
+            position:absolute;
+            top: 10%;
+            left:50%;
+            transform: translate(-50%,-2%);
+            max-height:600px;
+            border-radius:$round-xxl;
+            box-shadow: 0 11px 34px 0 rgb(0 0 0 / 20%);
+            padding: 0;
+            animation: fadeIn 0.5s ease-in-out;
+
+            &:after {
+                content: "";
+                position: absolute;
+                display: block;
+                top: 8px;
+                right: 70%;
+                width: 100px;
+                height: 100px;
+                border-radius:$round-xxl;
+
+                background: url('/src/assets/black-cat.png') no-repeat center;
+                background-blend-mode: multiply;
+                background-size: contain;
+                z-index: 1;
+            }
+
+            @keyframes fadeIn {
+                0% {
+                    opacity: 0;
+                    top: 5%;
+                }
+                100% {
+                    opacity: 1;
+                    top: 10%;
+                }
+            }
+
+            @media (min-width: 400px) {
+                padding: 20px;
+            }
+
+            @media (min-width: 576px) {
+                min-width:460px;
+            }
+          
+            .container-connexion, .container-inscription {
+                padding:10px 20px;
+                display:flex;
+                flex-direction: column;
+                align-items: center;
+
+                @include media-breakpoint-up(sm){
+                    padding: 20px 50px;
+                }
+
+                .img-container{
+                    img{
+                        width:100px; 
+                    }
+                }
+                .info-container{
+                    font-family: Arial, Helvetica, sans-serif;
+                    font-size:28px;
+                    font-weight:800;
+                    line-height: 36px;
+                    margin-block-start: 37px;
+                    text-align: center;
+                }
+            }
+        }
+    }
+}
+
+/* Formulaire */
+
+.form-container{
+    width:100%;
+
+    &.--80 {
+        width: 80%;
+    }
+
+    &.--50 {
+        width: 80%;
+
+        @media (min-width: 576px) {
+            width: 50%;
+        }
+    }
+
+    .form-elem{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin:20px 0;
+
+
+        &.align-start{
+            align-items: flex-start;
+        }
+
+        &.align-end{
+            align-items: flex-end;
+        }
+
+        @media (min-width: 576px) {
+            min-width: 250px;
+        }
+
+        label {
+            margin-bottom: 10px;
+
+            &.required{
+                &:after{
+                    content: "*";
+                    color: $required-star-color;
+                    font-size: 24px;
+                }
+            }
+        }
+
+        select {
+            min-width: 60px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: $round-xxs;
+            font-size: 14px;
+            color: #333;
+            background-color: #fff;
+
+            &:focus {
+                outline: none;
+                border-color: #007bff;
+                box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+            }
+        }
+
+        .select-wrapper {
+            position: relative;
+            display: inline-block;
+
+            .custom-select {
+                width: 200px;
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                font-size: 18px;
+                color: #333;
+                background-color: #fff;
+                appearance: none;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                cursor: pointer;
+
+                option {
+                    font-size: 16px;
+                    font-weight: 600;
+                    padding: 20px;
+                    margin: 0;
+                    cursor: pointer;
+                }
+            }
+
+            .select-arrow {
+                position: absolute;
+                top: 50%;
+                right: 10px;
+                transform: translateY(-50%);
+                width: 0;
+                height: 0;
+                border-style: solid;
+                border-width: 5px 5px 0 5px;
+                border-color: #999 transparent transparent transparent;
+                pointer-events: none;
+            }
+        }
+
+
+
+        input {
+            border: 1px solid #d6d6d6;
+            width: 100%;
+            height: 2.6em;
+            border-radius: $round-xs;
+            font-size: 17px;
+            line-height: 1.29412;
+            font-weight: 400;
+            letter-spacing: -.021em;
+            font-family: Arial, Helvetica, sans-serif;
+            padding-left: 10px;
+            background-color: $grey-2;
+            z-index: 3;
+
+            &:focus{
+                outline: none;
+                border: 1px solid $mediumBlue;
+            }
+
+            &.error{
+                border: 1px solid $warning;
+            }
+
+            &:disabled{
+                background-color: $grey-2;
+                border: 1px solid $grey-2;
+            }
+        }
+        .to-connexion-link {
+            margin-top: 20px;
+            color: $lightLavender;
+            cursor: pointer;
+            z-index: 3;
+            &:hover{
+                color: $darkpink;
+            }
+        }
+    }
+}
+
+.connexion__credits {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 20px 30px 10px 30px;
+    border-radius: 50px 0 0 0;
+    text-align: center;
+    font-size: 12px;
+    color: $lightLavender;
+    background-color: $mediumBlue;
+    z-index: 3;
+
+    a {
+        color: $lightLavender;
+        &:hover{
+            opacity: 1;
+            color: $darkpink;
+        }
+    }
+
+
+}

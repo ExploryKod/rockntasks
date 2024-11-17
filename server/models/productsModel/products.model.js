@@ -1,5 +1,6 @@
 const { ConnectionFactory } = require(`../factories/mysql/connectbdd`);
-const { sql } = require('../factories/neon/connectbdd');
+const { sql } = require(`../factories/neon/connectbdd`);
+
 
 const DATABASE_SERVICE = process.env.DATABASE_SERVICE;
 const connectionFactory = new ConnectionFactory();

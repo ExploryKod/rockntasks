@@ -1,4 +1,4 @@
-import { useState, useEffect, Fragment } from 'react';
+import { useState, useEffect } from 'react';
 import { CategoryPreview } from '../components/category-preview.component';
 
 const CATEGORIES = [
@@ -17,6 +17,7 @@ const CATEGORIES = [
 
     { id: 7, category_name: "Nos recettes", route: 'shop/7' },
   ];
+
 
 export const CategoriesPreview = () => {
     const [categories, setCategories] = useState(CATEGORIES);
@@ -42,17 +43,20 @@ export const CategoriesPreview = () => {
     }, []);
  
     return (  
-        <div  className="category-food-wrapper">
-            {categories.map((category_food) =>{
-                return (
-
+        <section>
+            {categories.length ? (
+               <div  className="category-food-wrapper">
+                      {categories.map((category_food) =>{
+                          return (
                     <CategoryPreview 
                     key={category_food.id}
                     title={category_food.category_name}
                     category_food_id={category_food.id}
                     category={category_food.category_name} />
-                )
-            })}
-        </div>) 
-        
+                          )
+                      })}
+                  </div>
+            ): null}   
+        </section>
+    ) 
 };
