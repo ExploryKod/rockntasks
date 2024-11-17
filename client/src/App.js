@@ -10,6 +10,7 @@ import Shopping from "./routes/shopping";
 import NotFoundPage from './routes/notFoundPage';
 import StripePayment from "./routes/StripePayment";
 import PaymentSuccess from "./routes/PaymentSuccess";
+import Commitment from "./routes/commitment";
 
 import NeedAuth from "./Auth/NeedAuth.tsx";
 import Connexion from "./Auth/Connexion.tsx";
@@ -31,6 +32,7 @@ function App() {
               <Route path='shopping' element={<NeedAuth><Shopping /></NeedAuth>} />
               <Route path="payment" element={<NeedAuth><StripePayment /></NeedAuth>} />
               <Route path="success" element={<NeedAuth><PaymentSuccess /></NeedAuth>} />
+              <Route path="commitment" element={<NeedAuth><Commitment /></NeedAuth>} />
               <Route path='*' element={<NotFoundPage category={""} />}  />
           </Route>
           <Route path='/credits' element={<Credits/>}/>

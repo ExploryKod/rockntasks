@@ -1,24 +1,13 @@
-import {React, useEffect } from 'react';
+import {React } from 'react';
 import { useContext } from 'react';
 import { ListContext } from '../context/list.context';
-import CartSummary from "./cartSummary";
+import ListSummary from "../components/todo/listSummary";
 
 const TaskList = () => {
     const { listItems } = useContext(ListContext);
     useContext(ListContext);
 
-    useEffect(() => {
-    
-        let totalNutrition = [];
-        listItems.forEach((listItem) => {
-          const { category_id } = listItem;
-          totalNutrition.push(category_id);
-    
-        });       
-  
-    }, [listItems]);
-  
-    
+    console.log("summary", listItems)
 
     return (
         <section className={"checkout-container"}>
@@ -29,21 +18,20 @@ const TaskList = () => {
 
                             <div className="table-header">
                                 <div>Tâche</div>
-                                <div>Identifiant</div>
-                                <div>Quantité</div>
-                                <div>Statut</div>
+                                <div>Objet</div>
+                                <div>Priorité</div>
+                                <div>Date</div>
                                 <div>Actions</div>
                             </div>
 
                         {listItems && listItems?.map((listItem) => (
                             <div key={listItem.id}>
-                                 <CartSummary cartItem={listItem} />
+                                 <ListSummary listItem={listItem} />
                             </div>
                         ))}
                     </div>
                     <div className="result-container"> 
                         <a className="button button--secondary paiement-btn" href="/commitment">Je m'engage</a>
-                        <span className='total'>TOTAL: X tâches</span>
                     </div>
                 </article>
                </>
