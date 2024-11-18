@@ -1,1 +1,20 @@
-{ "version": 2, "rewrites": [{ "source": "/(.*)", "destination": "/" }] }
+{
+    "builds": [
+      {
+        "src": "static/style/main.scss",
+        "use": "@vercel/static-build",
+        "config": { "distDir": "static/style" }
+      },
+      {
+        "src": "app.js",
+        "use": "@vercel/node"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "app.js"
+      }
+    ]
+  }
+  

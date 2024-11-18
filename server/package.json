@@ -7,7 +7,7 @@
     "start": "node app.js",
     "dev": "nodemon app.js",
     "sass-watch": "npx sass static/style/main.scss static/style/main.css",
-    "build": "./node_modules/.bin/webpack --config webpack.config.js"
+    "build": "npx sass static/style/main.scss static/style/main.css"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
