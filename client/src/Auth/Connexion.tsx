@@ -29,7 +29,7 @@ const Connexion = () => {
     try {
       const response = await fetch(`${serverHost}/auth/register`, {
         method: 'POST',
-        mode: "cors",
+        mode: "no-cors",
         body: new URLSearchParams({
           ...registerData
         })
@@ -64,6 +64,7 @@ const Connexion = () => {
     try {
       const response = await fetch(`${serverHost}/auth/logged`, {
         method: 'POST',
+        mode: "no-cors",
         body: new URLSearchParams({
           ...formData
         })
