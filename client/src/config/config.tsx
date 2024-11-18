@@ -1,7 +1,6 @@
 interface Config {
   serverPort: string | number;
   serverHost: string;
-  serverWsHost: string;
 }
 
 const config:Config = {
