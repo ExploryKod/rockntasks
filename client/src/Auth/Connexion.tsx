@@ -64,7 +64,6 @@ const Connexion = () => {
     try {
       const response = await fetch(`${serverHost}/auth/logged`, {
         method: 'POST',
-        mode: "no-cors",
         body: new URLSearchParams({
           ...formData
         })

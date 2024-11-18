@@ -12,7 +12,7 @@ const stripe = require("stripe")(process.env.STRIPE_PRIVATE_KEY);
 const app = express();
 
 const corsOptions = {
-  origin: 'https://rockntasks.vercel.app',
+  origin: "*",
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true, 
 };
