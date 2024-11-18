@@ -5,7 +5,7 @@ interface Config {
 console.info("server host is : ", process.env.VITE_SITE_URL_HTTP )
 const config:Config = {
     serverPort: 8000,
-    serverHost: "http://localhost:4000"
+    serverHost: "https://rockntasks-api.onrender.com"
 };
   
 export default config;
