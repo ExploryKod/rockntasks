@@ -6,8 +6,7 @@ interface Config {
 
 const config:Config = {
     serverPort: 8000,
-    serverHost: process.env.VITE_SITE_URL_HTTP ?? "http://localhost:4000",
-    serverWsHost: process.env.VITE_SITE_URL_WS ?? "wss://localhost:4000"
+    serverHost: process.env.VITE_SITE_URL_HTTP ?? "https://rockntasks-api.onrender.com/"
 };
   
 export default config;
