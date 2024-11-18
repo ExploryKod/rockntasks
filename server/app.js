@@ -10,7 +10,14 @@ dotenv.config({ path: '../.env'})
 const stripe = require("stripe")(process.env.STRIPE_PRIVATE_KEY);
 // const config = require('config');
 const app = express();
-app.use(cors());
+
+const corsOptions = {
+  origin: 'https://rockntasks.vercel.app',
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true, 
+};
+app.use(cors(corsOptions));
+
 app.use(bodyParser.json());
 
 const calculateTotalOrderAmount = (items) => {
