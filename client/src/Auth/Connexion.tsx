@@ -8,6 +8,7 @@ import { usePasswordMeter } from "../Hook/usePasswordMeter.tsx";
 
 const Connexion = () => {
   const serverHost: string = config.serverHost;
+  console.log("serverhost ", serverHost)
   const [toggle, setToggle] = useState(true);
   const [formData, setFormData] = useState({password: "", username: ""})
   const [registerData, setRegisterData] = useState({username: "", password: "", status: ""})
