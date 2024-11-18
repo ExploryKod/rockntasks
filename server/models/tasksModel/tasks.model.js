@@ -1,12 +1,14 @@
 const { ConnectionFactory } = require(`../factories/mysql/connectbdd`);
 const { sql } = require('../factories/neon/connectbdd');
 
-const DATABASE_SERVICE = process.env.DATABASE_SERVICE;
+const DATABASE = process.env.DATABASE_SERVICE || 'mysql';
+console.info(`Connecting tasks modal to ${DATABASE_SERVICE}`)
+
 const connectionFactory = new ConnectionFactory();
 
-async function getAllTasks(DATABASE_SERVICE) {
+async function getAllTasks(DATABASE) {
  
-  switch (DATABASE_SERVICE) {
+  switch (DATABASE) {
     case 'mysql':
       const connection = await connectionFactory.createConnection();
       const [dbRows, dbFields] = await connection.execute('SELECT * FROM tasks');
@@ -30,7 +32,7 @@ async function getAllTasks(DATABASE_SERVICE) {
 
 async function getTasksByActivity(activity) {
 
-  switch (DATABASE_SERVICE) {
+  switch (DATABASE) {
     case 'mysql':
       const connection = await connectionFactory.createConnection();
       console.log('Mysql Database connection successful to get task by activity!');
@@ -53,7 +55,7 @@ async function getTasksByActivity(activity) {
 
 async function insertTask(taskData) {
 
-  switch(DATABASE_SERVICE) {
+  switch(DATABASE) {
     case 'mysql':
         const connection = await connectionFactory.createConnection();
         console.log('Mysql Database connection successful to insert task!');

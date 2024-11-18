@@ -1,9 +1,10 @@
 const router = require('express').Router();
 const taskModel = require('../../models/tasksModel/tasks.model');
-
+$database = process.env.DATABASE_SERVICE || 'mysql';
+console.info("database: " + $database)
 router.get('/', async (req, res) => {
   try {
-    const alltasks = await taskModel.getAllTasks('mysql');
+    const alltasks = await taskModel.getAllTasks($database);
     res.set('Access-Control-Allow-Origin', '*');
     res.send(alltasks);
   } catch (error) {
