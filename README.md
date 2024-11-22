@@ -50,6 +50,22 @@ npm i sass
 npm install react-router-dom@
 ```
 
+Puis aller dans le projet front (`cd client`) et faite : 
+
+```
+npm run watch
+```
+ou:
+```
+npm run start
+```
+Puis, assurez-vous d'avoir importer le dump `task.sql` dans votre bdd local et aller dans le projet back (`cd client`) et faite : 
+
+```
+npm run dev
+```
+Configurer votre bdd et les url avec le .env mais aussi dans le dossier config du front pour ce qui aurait pu changer.
+
 ### Inspiration
 
 Ma motivation pour la conception de ce projet est le site de Michael Greger <a href="https://nutritionfacts.org/"> Nutrition Facts </a>.
