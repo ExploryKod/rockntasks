@@ -3,21 +3,21 @@
   <img src='beans.jpeg' width="40%">
 </div>
 
-## <p align="center"><a href="https://gleeful-sorbet-733e50.netlify.app">FoodCare</a></p>
+## <p align="center"><a href="https://rockntasks.vercel.app">FoodCare</a></p>
 
-## <p align="center"> Projet sur l'alimentation saine</p> 
+## <p align="center"> Projet sur le coaching et l'alimentation saine</p> 
 
-#### Statut du site en production : 
+#### site en production : 
   
-[![Netlify Status](https://api.netlify.com/api/v1/badges/3844ecad-f052-47dd-b22d-322d3f0b1ea3/deploy-status)](https://app.netlify.com/sites/gleeful-sorbet-733e50/deploys) </p> 
+Ce site est hébergé sur vercel pour le front et render pour le back. Ma limite est lié à l'usage de la base de donnée: en effet le projet se bloque du fait qu'il y a une limite d'appel à la base du fait d'un plan gratuit.
 
 ## Contexte
 
-Ce projet a pour but d'initier mon apprentissage de la librairie JavaScript React. <br/>
+Ce projet est en cours de conception. Il portera sur le thème de l'alimentation saine et les bonnes habitudes. <br/>
 
-Il a été conçu en suivant d'abord un cours permettant de poser de bonnes bases en React puis, peu à peu, je m'éloigne du caneva du cours.<br/>
+Ce projet est lié à un test de positionnement dans le cadre des cours sur Ynov.b Le but initial est de faire une todo list mais j'ai ajouté la partie sur l'alimentation.
 
-Ce projet est en cours de conception. Il portera sur le thème de l'alimentation saine. <br/>
+Ce projet a pour but d'initier mon apprentissage de la librairie JavaScript React, créer une authentification avec JWT et déployer en prod. <br/>
 
 Cliquez sur le titre pour avoir un aperçu de certaines fonctionnalités<br/>
 
@@ -68,5 +68,7 @@ Affaire à suivre !<br/>
 ### Technologies
 
 En utilisant la librairie React et son mode spécifique de fonctionnement, je décide aussi d'utiliser sass et peut-être TypeScript qui viendra remplacer alors mes premiers choix en JavaScript.
+
+Le backend utilise node js.
 
 Nota: les photos sont libre de droit. Pour trouver les sources des photos utilisées dans le site allez voir dans le fichier SOURCES.md
